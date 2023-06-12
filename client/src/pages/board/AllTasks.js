@@ -1,10 +1,8 @@
 import React, { useState } from "react";
-import ReactDOM from "react-dom";
-import "@atlaskit/css-reset";
 import styled from "styled-components";
 import { DragDropContext, Droppable } from "react-beautiful-dnd";
 import mockData from "./mockdata";
-import Column from "./column";
+import { Column } from "../../components";
 
 const Container = styled.div`
   display: flex;
@@ -40,8 +38,8 @@ const AllTasks = () => {
       return;
     }
 
-    const home = this.state.columns[source.droppableId];
-    const foreign = this.state.columns[destination.droppableId];
+    const home = data.columns[source.droppableId];
+    const foreign = data.columns[destination.droppableId];
 
     if (home === foreign) {
       const newTaskIds = Array.from(home.taskIds);
@@ -56,7 +54,7 @@ const AllTasks = () => {
       const newState = {
         ...data,
         columns: {
-          ...this.state.columns,
+          ...data.columns,
           [newHome.id]: newHome,
         },
       };
@@ -81,14 +79,14 @@ const AllTasks = () => {
     };
 
     const newState = {
-      ...this.state,
+      ...data,
       columns: {
-        ...this.state.columns,
+        ...data.columns,
         [newHome.id]: newHome,
         [newForeign.id]: newForeign,
       },
     };
-    this.setState(newState);
+    setData(newState);
   };
 
   return (
@@ -98,7 +96,14 @@ const AllTasks = () => {
           <Container {...provided.droppableProps} ref={provided.innerRef}>
             {data.columnOrder.map((columnId, index) => {
               const column = data.columns[columnId];
-              <Column column={column.id} columnName = {column.title} tasks = {column.taskIds}/>
+              return (
+                <Column
+                  key={column.id}
+                  column={column}
+                  index={index}
+                  taskMap={data.tasks}
+                />
+              );
             })}
             {provided.placeholder}
           </Container>

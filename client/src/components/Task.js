@@ -14,11 +14,11 @@ const Container = styled.div`
       : "white"};
 `;
 
-const Task = ({ card, index }) => {
+const Task = ({ task, index }) => {
   const isDragDisabled = this.props.task.id === "task-1";
   return (
     <Draggable
-      draggableId={card.id}
+      draggableId={task.id}
       index={index}
       isDragDisabled={isDragDisabled}
     >
@@ -30,7 +30,7 @@ const Task = ({ card, index }) => {
           isDragging={snapshot.isDragging}
           isDragDisabled={isDragDisabled}
         >
-          {card.content}
+          {task.content}
         </Container>
       )}
     </Draggable>
