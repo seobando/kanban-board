@@ -6,8 +6,8 @@ import {
   SharedLayout,
   Stats,
   AddJob,
-} from './pages/dashboard'
-import {AllTasks} from './pages/board'
+} from './pages/reports'
+import {AllTasks} from './pages/workflow'
 
 function App() {
   return (
