@@ -1,5 +1,5 @@
-import Landing from './Landing'
+import SharedLayout from './SharedLayout'
 import Error from './Error'
-import Register from './Register'
+import Login from './login'
 import ProtectedRoute from './ProtectedRoute'
-export { Landing, Error, Register, ProtectedRoute }
+export { SharedLayout, Error, Login, ProtectedRoute }
