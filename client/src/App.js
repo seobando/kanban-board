@@ -22,11 +22,11 @@ function App() {
           }
         >
           <Route index element={<Stats />} />
+          <Route path='all-tasks' element={<AllTasks />} />
           <Route path='all-jobs' element={<AllJobs/>} />
           <Route path='add-job' element={<AddJob />} />
           <Route path='profile' element={<Profile />} />
         </Route>
-        <Route path='/all-tasks' element={<AllTasks />} />
         <Route path='/register' element={<Register />} />
         <Route path='/landing' element={<Landing />} />
         <Route path='*' element={<Error />} />
